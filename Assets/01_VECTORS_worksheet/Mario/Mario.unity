@@ -439,21 +439,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1672728459227633656, guid: 29df0457641db2d4f999446359339959, type: 3}
   m_PrefabInstance: {fileID: 2142997463}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1602136178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602136174}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1557fb4c613029a4793dc1f812ea31a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planet: {fileID: 25543976}
-  force: 5
-  gravityStrength: 4
 --- !u!50 &1602136179
 Rigidbody2D:
   serializedVersion: 4
@@ -473,7 +458,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!70 &1602136180
 CapsuleCollider2D:
@@ -501,6 +486,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c32b138b1f2f6e41a1ffee8a6dbfee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: {fileID: 25543976}
+  force: 5
+  gravityStrength: 5
+--- !u!114 &1602136185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602136174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1557fb4c613029a4793dc1f812ea31a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 25543976}

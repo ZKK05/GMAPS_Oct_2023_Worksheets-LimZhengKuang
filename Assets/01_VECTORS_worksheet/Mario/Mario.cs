@@ -14,11 +14,26 @@ public class Mario : MonoBehaviour
 
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
+        gravityDir = planet.position - transform.position;
+        moveDir = new Vector3(gravityDir.y, - gravityDir.x, 0f);
+        moveDir = moveDir.normalized * -1f;
+
+        rb.AddForce(moveDir * force );
+        gravityNorm = gravityDir.normalized;
+        rb.AddForce(gravityNorm * gravityStrength);
+        //rb.AddForce(gravityDir * (force - 4f));
+
+        float angle = Vector3.SignedAngle(Vector3.down, moveDir, Vector3.forward);
+
+        rb.MoveRotation(Quaternion.Euler(0,0,angle));
+
+        DebugExtension.DebugArrow(transform.position, gravityDir, Color.red);
+        DebugExtension.DebugArrow(transform.position, moveDir, Color.blue);
 
     }
 }
