@@ -24,12 +24,26 @@ public class Player : MonoBehaviour
         return vector;
     }
 
-    //float Dot(Vector3 vectorA, Vector3 vectorB)
-    //{
-    //    // Your code here
-    //}
+    float Dot(Vector3 vectorA, Vector3 vectorB)
+    {
+        return ((vectorA.x * vectorB.x) + (vectorA.y * vectorB.y) + (vectorA.z * vectorB.z));
+   
+    }
 
-    //float AngleToPlayer()
+    float AngleToPlayer()
+    {
+        Vector3 Captain = Vector3.forward;
+        Vector3 Other = OtherPlayer.transform.position;
+
+        Captain = Normalise(Captain);
+        Other = Normalise(Other);
+
+        float AB = Dot(Other, Captain); //Calculate the dot product of the normalised vectors A and B
+
+        float angle = (float)Mathf.Acos (AB) * Mathf.Rad2Deg; //Acos is cos-1, Mathf.Rad2Deg converts radian into degrees
+        Debug.Log("Angle is " + angle);
+        return angle;
+    }
     //{
     //    // Steps to calculate the angle between the direction Captain is facing and 
     //    // the direction from Captain to Other
@@ -79,12 +93,13 @@ public class Player : MonoBehaviour
     {
         if (IsCaptain)
         {
-            Debug.Log("Captain" + transform.position);
-            Debug.Log("Player" + OtherPlayer.transform.position);
+            //Debug.Log("Captain" + transform.position);
+            //Debug.Log("Player" + OtherPlayer.transform.position);
             DebugExtension.DebugArrow(transform.position, OtherPlayer.transform.position ,Color.black);
             DebugExtension.DebugArrow(transform.position , transform.forward, Color.blue);
 
-            
+            AngleToPlayer();
+
         }
     }
 }
