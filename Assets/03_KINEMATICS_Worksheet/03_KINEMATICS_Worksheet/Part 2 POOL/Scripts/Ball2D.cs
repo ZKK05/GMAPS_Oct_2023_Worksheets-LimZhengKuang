@@ -26,11 +26,11 @@ public class Ball2D : MonoBehaviour
         float distance = Util.FindDistance(a, b);
     }
 
-    public bool IsCollidingWith(float x, float y)
-    {
-        float distance = ;
-        return distance <= Radius;
-    }
+    //public bool IsCollidingWith(float x, float y)
+    //{
+    //    //float distance = ;
+    //    //return distance <= Radius;
+    //}
 
     public bool IsCollidingWith(Ball2D other)
     {
@@ -45,13 +45,13 @@ public class Ball2D : MonoBehaviour
 
     private void UpdateBall2DPhysics(float deltaTime)
     {
-        float displacementX = /*your code here*/;
-        float displacementY = /*your code here*/;
+        //float displacementX = /*your code here*/;
+        //float displacementY = /*your code here*/;
 
-        Position.x += /*your code here*/;
-        Position.y += /*your code here*/;
+        //Position.x += /*your code here*/;
+        //Position.y += /*your code here*/;
 
-        transform.position = new Vector2(/*your code here*/);
+        //transform.position = new Vector2(/*your code here*/);
     }
 }
 

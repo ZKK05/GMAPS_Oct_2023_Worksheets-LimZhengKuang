@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class HMatrix2D
 {
@@ -98,20 +99,6 @@ public class HMatrix2D
     public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right)
     {
         return new HMatrix2D(
-            //(
-            /* 
-                00 01 02    00 xx xx
-                xx xx xx    10 xx xx
-                xx xx xx    20 xx xx
-                */
-
-
-
-            /* 
-                00 01 02    xx 01 xx
-                xx xx xx    xx 11 xx
-                xx xx xx    xx 21 xx
-                */
             left.Entries[0, 0] * right.Entries[0, 0] + left.Entries[0, 1] * right.Entries[1, 0] + left.Entries[0, 2] * right.Entries[2, 0], //right entries change, left same
             left.Entries[0, 0] * right.Entries[0, 1] + left.Entries[0, 1] * right.Entries[1, 1] + left.Entries[0, 2] * right.Entries[2, 1], //m00, m01, m02
             left.Entries[0, 0] * right.Entries[0, 2] + left.Entries[0, 1] * right.Entries[1, 2] + left.Entries[0, 2] * right.Entries[2, 2],
@@ -129,35 +116,55 @@ public class HMatrix2D
         //);
         //}
 
-        //public static bool operator ==(HMatrix2D left, HMatrix2D right)
-        //{
-        // your code here
-        //}
+    public static bool operator == (HMatrix2D left, HMatrix2D right)
+    {
+        for (int x = 0; x < 3; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                if (left.Entries[x, y] != right.Entries[y, x])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
-        //public static bool operator !=(HMatrix2D left, HMatrix2D right)
-        //{
-        // your code here
-        //}
+    public static bool operator != (HMatrix2D left, HMatrix2D right)
+    {
+        for (int x = 0; x < 3; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                if (left.Entries[x, y] == right.Entries[y, x])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
-        //public override bool Equals(object obj)
-        //{
-        // your code here
-        //}
+    //public override bool Equals(object obj)
+    //{
+    // your code here
+    //}
 
-        //public override int GetHashCode()
-        //{
-        // your code here
-        //}
+    //public override int GetHashCode()
+    //{
+    // your code here
+    //}
 
-        //public HMatrix2D transpose()
-        //{
-        //return // your code here
-        //}
+    //public HMatrix2D transpose()
+    //{
+    //return // your code here
+    //}
 
-        //public float getDeterminant()
-        //{
-        //return // your code here
-        //}
+    //public float getDeterminant()
+    //{
+    //return // your code here
+    //}
 
     public void setIdentity()
     {

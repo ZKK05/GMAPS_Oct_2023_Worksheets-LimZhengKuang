@@ -20,7 +20,8 @@ public class TransformMesh : MonoBehaviour
     private MeshManager meshManager;
     HVector2D pos = new HVector2D();
 
-    
+    private float translateX;
+    private float translateY;
 
 
     void Start()
@@ -28,8 +29,11 @@ public class TransformMesh : MonoBehaviour
         meshManager = GetComponent<MeshManager>();
         pos = new HVector2D(gameObject.transform.position.x, gameObject.transform.position.y);
 
-        Translate(1, 1);
+        translateX = 1;
+        translateY = 1;
+        Translate(translateX, translateY);
         Rotate(90);
+        print(transform.position.x);
     }
 
 
@@ -48,10 +52,9 @@ public class TransformMesh : MonoBehaviour
         HMatrix2D fromOriginMatrix = new HMatrix2D();
         HMatrix2D rotateMatrix = new HMatrix2D();
 
+        toOriginMatrix.setTranslationMat(-translateX, -translateY);
+        fromOriginMatrix.setTranslationMat(translateX, translateY);
 
-
-        toOriginMatrix.setTranslationMat(-transform.position.x, -transform.position.y);
-        fromOriginMatrix.setTranslationMat(transform.position.x, transform.position.y);
         rotateMatrix.setRotationMat(angle);
 
         
