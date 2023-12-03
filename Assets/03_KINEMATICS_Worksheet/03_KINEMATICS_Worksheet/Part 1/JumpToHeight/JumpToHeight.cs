@@ -22,11 +22,12 @@ public class JumpToHeight : MonoBehaviour
         //float a = Physics.gravity.y;
         //float s = Height;
 
-        //float u = Mathf.Sqrt(v*v - (2*a*s));
-        //rb.velocity = new Vector3();
+        float u = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height);
 
-        float jumpForce = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height);
-        rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        rb.velocity = new Vector3(0, u, 0);
+
+        //float jumpForce = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height);
+        //rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
     }
 
     private void Update()
