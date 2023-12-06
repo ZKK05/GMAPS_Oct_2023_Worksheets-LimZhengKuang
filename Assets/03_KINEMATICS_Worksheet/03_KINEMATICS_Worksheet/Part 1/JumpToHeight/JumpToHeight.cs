@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class JumpToHeight : MonoBehaviour
 {
-    public float Height = 1f;
+    public float Height = 1f; //jump height value
     Rigidbody rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>(); //get rigidbody component from game object
     }
 
     void Jump()
@@ -22,7 +22,8 @@ public class JumpToHeight : MonoBehaviour
         //float a = Physics.gravity.y;
         //float s = Height;
 
-        float u = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height);
+        float u = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height); //getting the velocity required for desired jump height to escape the gravity 
+                                                                 //that is why -2 * gravity since it cancels out the gravity by making it positive
 
         rb.velocity = new Vector3(0, u, 0);
 
@@ -32,7 +33,7 @@ public class JumpToHeight : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //space bar has been pressed down, call jump function
         {
             
             Jump();
