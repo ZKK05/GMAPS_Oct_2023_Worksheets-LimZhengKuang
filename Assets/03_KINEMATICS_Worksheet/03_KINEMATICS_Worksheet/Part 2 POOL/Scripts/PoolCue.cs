@@ -21,7 +21,7 @@ public class PoolCue : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) //if player presses down mouse button
         {
 
-            var startLinePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Start line drawing
+            var startLinePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // start line pos equals to mouse position from screen space to game world space
             if (ball != null && ball.IsCollidingWith(startLinePos.x , startLinePos.y))//if ball exists, and collides with start line
             {
                 drawnLine = lineFactory.GetLine(ballObject.transform.position, startLinePos, 5, Color.black); //call the GetLine function which accepts parameters
