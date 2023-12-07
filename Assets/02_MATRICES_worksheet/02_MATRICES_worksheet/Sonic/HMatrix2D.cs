@@ -18,7 +18,7 @@ public class HMatrix2D
 
     public HMatrix2D(float[,] multiArray) //constructor that accepts 2d array paramteres
     {
-        for (int x = 0; x < 3; x++)// for every x and every y, take the respective values to the matrix entries
+        for (int x = 0; x < 3; x++)// for every values of x(row) and every y(column), take the respective values to the matrix entries
         {
             for (int y = 0; y < 3; y++) 
             {
@@ -56,7 +56,7 @@ public class HMatrix2D
     public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right) //addition constructor
     {
         HMatrix2D result = new HMatrix2D();
-        for (int x = 0; x < 3; x++) //for every x and y values, add it to the left matrix entry and the right matrix entry respectively
+        for (int x = 0; x < 3; x++) //for every x(row) and y(column) values, add it to the left matrix entry and the right matrix entry respectively
         {
             for (int y = 0; y < 3; y++)
             {
@@ -70,7 +70,7 @@ public class HMatrix2D
     public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right) //subtraction constructor
     {
         HMatrix2D result = new HMatrix2D();
-        for (int x = 0; x < 3; x++) //for every x and y values, add it to the left matrix entry and right matrix entry respectively
+        for (int x = 0; x < 3; x++) //for every x(row) and y(column) values, add it to the left matrix entry and right matrix entry respectively
         {
             for (int y = 0; y < 3; y++)
             {
@@ -83,7 +83,7 @@ public class HMatrix2D
     public static HMatrix2D operator *(HMatrix2D left, float scalar) //multipication with scalar constructor
     {
         HMatrix2D result = new HMatrix2D();
-        for (int x = 0; x < 3; x++) //for every x and y values, add it to the matrix entry
+        for (int x = 0; x < 3; x++) //for every x(row) and y(column) values, add it to the matrix entry
         {
             for (int y = 0; y < 3; y++)
             {
@@ -104,9 +104,9 @@ public class HMatrix2D
 
     // Note that the second argument is a HMatrix2D object
     //
-    public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right) //multiplying a 3x3 matrix by a 3x3 matrix, row times column respectively
+    public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right) //multiplying a 3x3 matrix by a 3x3 matrix, row times column respectively, first row * first column & add the values tgt and place the value at (0, 0)
     {
-        return new HMatrix2D(
+        return new HMatrix2D(//use the same multiplication logic for the rest of the rows, example second row * second column at (1, 0)
             // Calculate the new entry at position (0, 0) in the result matrix, followed by (0, 1), (0,2)
             left.Entries[0, 0] * right.Entries[0, 0] + left.Entries[0, 1] * right.Entries[1, 0] + left.Entries[0, 2] * right.Entries[2, 0], //right entries change, left same
             left.Entries[0, 0] * right.Entries[0, 1] + left.Entries[0, 1] * right.Entries[1, 1] + left.Entries[0, 2] * right.Entries[2, 1], //m00, m01, m02
@@ -129,7 +129,7 @@ public class HMatrix2D
 
     public static bool operator == (HMatrix2D left, HMatrix2D right)
     {
-        for (int x = 0; x < 3; x++) //for every x value and y value of the two matrix
+        for (int x = 0; x < 3; x++) //for every x(row) value and y(column) value of the two matrix
         {
             for (int y = 0; y < 3; y++)
             {
@@ -144,7 +144,7 @@ public class HMatrix2D
 
     public static bool operator != (HMatrix2D left, HMatrix2D right)
     {
-        for (int x = 0; x < 3; x++) //for every x value and y value of the two matrix
+        for (int x = 0; x < 3; x++) //for every x(row) value and y(column) value of the two matrix
         {
             for (int y = 0; y < 3; y++)
             {
@@ -181,10 +181,10 @@ public class HMatrix2D
     {
         for (int x = 0 ; x < 3; x++)
         {
-            for (int y = 0 ; y < 3; y++) //for every x and y value,
+            for (int y = 0 ; y < 3; y++) //for every x(row) and y(column) values,
             {
-                Entries[x, y] = x == y ? 1 : 0; //Set x and y value to 1 if x equals to y, else, set value to 0
-                //Creates the identity matrix where all diagonal elements are 1 and non-diagonal elements are0
+                Entries[x, y] = x == y ? 1 : 0; //if value of X(row) equals to Y(column) for example at position (0,0), value = 1 since positions of equal x and y values are diagonal elements
+                //Creates the identity matrix where all diagonal elements are 1 and non-diagonal elements are 0
             }
         }
     }

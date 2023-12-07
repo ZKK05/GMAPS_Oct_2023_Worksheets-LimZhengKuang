@@ -34,7 +34,7 @@ public class PoolCue : MonoBehaviour
             drawnLine.EnableDrawing(false); //drawing is false
 
             //update the velocity of the white ball.
-            HVector2D v = new HVector2D(drawnLine.end - drawnLine.start); //calculate velocity based on how far back the line has been drawn previously
+            HVector2D v = new HVector2D(drawnLine.end - drawnLine.start); //calculate velocity & direction based on how far back the line has been drawn previously
             ball.Velocity = v; //set the velocity to the ball
 
             drawnLine = null; // End line drawing            
